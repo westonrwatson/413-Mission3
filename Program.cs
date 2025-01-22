@@ -22,7 +22,7 @@ class Program
             // Add Item
             if (selection == 1)
             {
-                addItem();
+                AddItem();
                 continue;
             }
 
@@ -65,7 +65,8 @@ class Program
         }
     }
     
-    static void addItem()
+    // Add Item Method
+    static void AddItem()
     {
         // User Input Food Name
         Console.Write("Enter Food Name: ");
