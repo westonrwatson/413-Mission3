@@ -1,60 +1,82 @@
 // Weston Watson, Section 3, Team 3
-
 namespace Mission3;
 
 // Food Item Class
 public class FoodItem
 {
     // Private lists to store food details
-    private List<string> _names = new List<string>();
-    private List<string> _categories = new List<string>();
-    private List<int> _quantities = new List<int>();
-    private List<string> _expiration = new List<string>();
+    private List<string> _names;
+    private List<string> _categories;
+    private List<int> _quantities;
+    private List<string> _expiration;
+
+    // Constructor to initialize the lists
+    public FoodItem()
+    {
+        _names = new List<string>();
+        _categories = new List<string>();
+        _quantities = new List<int>();
+        _expiration = new List<string>();
+    }
 
     // Method to add a food name
     public void AddFoodName(string name)
     {
         _names.Add(name);
-        //Console.WriteLine("Food item " + name + " added successfully!");
     }
 
     // Method to add a category
     public void AddCategory(string category)
     {
         _categories.Add(category);
-        //Console.WriteLine("Category " + category + " added successfully!");
     }
 
     // Method to add quantity
     public void AddQuantity(int quantity)
     {
         _quantities.Add(quantity);
-        //Console.WriteLine("Quantity " + quantity + " added successfully!");
     }
 
     // Method to add expiration date
     public void AddExpirationDate(string date)
     {
         _expiration.Add(date);
-        //Console.WriteLine("Expiration date " + date + " added successfully!");
     }
     
     // Method to remove all info about a food item by name
-    public void RemoveFoodItem(string name)
+    public void RemoveFoodItem()
     {
-        int index = _names.IndexOf(name);
-        if (index != -1)
+        if (_names.Count == 0)
         {
-            _names.RemoveAt(index);
-            _categories.RemoveAt(index);
-            _quantities.RemoveAt(index);
-            _expiration.RemoveAt(index);
-
-            //Console.WriteLine($"Food item '{name}' removed successfully!");
+            Console.WriteLine("No food items entered. Please add food items first.");
         }
         else
         {
-            Console.WriteLine($"Food item '{name}' not found.");
+            // Display Possible Food Names to Remove
+            Console.WriteLine("--- Food Names ---");
+            for (int i = 0; i < _names.Count; i++)
+            {
+                Console.WriteLine(_names[i]);
+            }
+            
+            // Prompt to Remove
+            Console.WriteLine("What Food Item would you like to remove??");
+            string name = Console.ReadLine()?.Trim().ToLower();
+            
+            // Remove Food Item
+            int index = _names.IndexOf(name);
+            if (index != -1)
+            {
+                _names.RemoveAt(index);
+                _categories.RemoveAt(index);
+                _quantities.RemoveAt(index);
+                _expiration.RemoveAt(index);
+            }
+            else
+            {
+                Console.WriteLine("Food item '" + name + "' not found.");
+                RemoveFoodItem();
+            }
         }
     }
 
