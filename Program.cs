@@ -1,5 +1,6 @@
-﻿namespace Mission3;
+﻿// Weston Watson, Section 3, Team 3
 
+namespace Mission3;
 class Program
 {
     static FoodItem _fi = new FoodItem();

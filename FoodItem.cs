@@ -1,3 +1,5 @@
+// Weston Watson, Section 3, Team 3
+
 namespace Mission3;
 
 // Food Item Class
